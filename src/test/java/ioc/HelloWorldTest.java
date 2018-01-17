@@ -32,7 +32,7 @@ class HelloWorldTest {
                 1.78f,
                 true,
                 false,
-                new SimpleCountry(1, "Russia", "RU"),
+                new SimpleCountry(1L, "Russia", "RU"),
                 Arrays.asList("asd@asd.ru", "+7-234-456-67-89"));
     }
 }
