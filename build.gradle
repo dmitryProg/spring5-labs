@@ -6,6 +6,7 @@ apply plugin: 'java'
 sourceCompatibility = 9
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -20,20 +21,13 @@ buildscript {
 
 apply plugin: 'org.junit.platform.gradle.plugin'
 
-junitPlatform {
-    logManager 'org.apache.logging.log4j.jul.LogManager'
-}
-
 configurations {
     testCompile.extendsFrom compileOnly
 }
 
 dependencies {
-    compile 'org.apache.logging.log4j:log4j-jul:+',
-            'org.apache.logging.log4j:log4j-core:+',
 
-            // Spring Core (IoC)
-            'org.springframework:spring-context:+',
+    compile 'org.springframework:spring-context:+',
 
             // AOP
             'org.aspectj:aspectjrt:+',
@@ -49,21 +43,26 @@ dependencies {
             'org.hibernate:hibernate-spatial:+',
             'org.hibernate:hibernate-validator:+',
             'org.hibernate:hibernate-java8:+',
-            'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:+'
 
+            // Commons
+            'org.apache.logging.log4j:log4j-slf4j-impl:+',
+            'javax.xml.bind:jaxb-api:+',
             'io.vavr:vavr:+'
 
-    // H2
     testRuntime 'com.h2database:h2:+'
 
     compileOnly 'org.projectlombok:lombok:+',
             'edu.washington.cs.types.checker:checker-framework:+'
 
-    testCompile 'org.junit.jupiter:junit-jupiter-api:+',
-            'org.junit.jupiter:junit-jupiter-engine:+',
+    testCompile 'org.junit.jupiter:junit-jupiter-params:+',
             'org.hamcrest:java-hamcrest:+',
-            'org.springframework:spring-test:+',
-            'org.mockito:mockito-core:+'
+            'org.mockito:mockito-core:+',
+            'org.springframework:spring-test:+'
+
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:+'
+
+    // To avoid compiler warnings about @API annotations in JUnit code
+    testCompileOnly 'org.apiguardian:apiguardian-api:+'
 }
 
 // type in terminal: gradle wrapper --gradle-version=4.5-rc-1

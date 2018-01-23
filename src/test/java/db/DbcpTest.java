@@ -4,6 +4,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.SneakyThrows;
 import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +16,8 @@ import java.sql.Statement;
 
 class DbcpTest {
 
-    private static final String SQL = "SELECT account_number, account_type, person_name FROM account";
+    private static final String SQL =
+            "SELECT account_number, account_type, person_name FROM account";
 
     private DataSource dataSource;
 
@@ -44,16 +46,14 @@ class DbcpTest {
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             connection.setAutoCommit(false);
-            statement.executeUpdate(new String(Files.readAllBytes(Paths.get("./resources/sql/1.sql"))));
-            statement.executeUpdate(new String(Files.readAllBytes(Paths.get("./resources/sql/2.sql"))));
-            statement.executeUpdate(new String(Files.readAllBytes(Paths.get("./resources/sql/3.sql"))));
-            statement.executeUpdate(new String(Files.readAllBytes(Paths.get("./resources/sql/4.sql"))));
+            statement.executeUpdate(new String(Files.readAllBytes(Paths.get("./src/test/resources/db-schema.sql"))));
             connection.commit();
 //            connection.rollback();
             connection.setAutoCommit(true);
         }
     }
 
+    @Disabled("https://stackoverflow.com/questions/40234989/error-occured-while-trying-to-acquire-a-cached-preparedstatement-in-a-background")
     @Test
     @SneakyThrows
     @DisplayName("Name method works correctly")

@@ -1,33 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:p="http://www.springframework.org/schema/p" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- Activates @Autowired -->
-    <!--<context:annotation-config/>-->
+    <import resource="jdbc.xml"/>
+    <context:component-scan base-package="lab.dao.jpa"/>
 
-    <!--<import resource="jdbc.xml"/>-->
-    <context:component-scan base-package="lab.model, lab.dao.jpa"/>
-
-    <jdbc:embedded-database id="dataSource" type="H2">
-        <jdbc:script location="classpath:db-schema.sql"/>
-        <!--<jdbc:script location="classpath:sql/1.sql"/>-->
-        <!--<jdbc:script location="classpath:sql/2.sql"/>-->
-        <!--<jdbc:script location="classpath:sql/3.sql"/>-->
-        <!--<jdbc:script location="classpath:sql/4.sql"/>-->
-        <!--<jdbc:script location="classpath:sql/5.sql"/>-->
-    </jdbc:embedded-database>
-
-    <bean id="lcemf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+    <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           p:dataSource-ref="dataSource"
           p:persistenceUnitName="springframework.lab.orm.jpa"
           p:persistenceProviderClass="org.hibernate.jpa.HibernatePersistenceProvider"
-          p:loadTimeWeaver-ref="loadTimeWeaver"/>
+          p:loadTimeWeaver-ref="timeWeaver"/>
 
-    <bean id="loadTimeWeaver"
+    <bean id="timeWeaver"
           class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
 
 </beans>

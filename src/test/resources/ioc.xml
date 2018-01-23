@@ -3,30 +3,29 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:c="http://www.springframework.org/schema/c"
        xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <import resource="application-context.xml"/>
-    <context:component-scan base-package="lab.model"/>
 
-    <!--<bean id="person" class="lab.model.simple.UsualPerson"-->
-          <!--c:id="1"-->
-          <!--c:name="John Smith"-->
-          <!--c:age="35"-->
-          <!--c:height="1.78"-->
-          <!--c:isProgrammer="true"-->
-          <!--c:broke="false"-->
-          <!--c:country-ref="country"-->
-          <!--c:contacts-ref="contacts"/>-->
+    <bean id="person" class="lab.model.simple.UsualPerson"
+          c:id="1"
+          c:name="John Smith"
+          c:age="35"
+          c:height="1.78"
+          c:isProgrammer="true"
+          c:broke="false"
+          c:country-ref="country"
+          c:contacts-ref="contacts"/>
 
-    <!--<bean id="country" class="lab.model.simple.SimpleCountry"-->
-          <!--c:id="1"-->
-          <!--c:name="Russia"-->
-          <!--c:codeName="RU"/>-->
+    <bean id="country" class="lab.model.simple.SimpleCountry"
+          c:id="1"
+          c:name="Russia"
+          c:codeName="RU"/>
 
-    <!--<util:list id="contacts" value-type="java.lang.String">-->
-        <!--<value>asd@asd.ru</value>-->
-        <!--<value>+7-234-456-67-89</value>-->
-    <!--</util:list>-->
+    <util:list id="contacts" value-type="java.lang.String">
+        <value>asd@asd.ru</value>
+        <value>+7-234-456-67-89</value>
+    </util:list>
 </beans>

@@ -4,8 +4,9 @@ import lab.model.Bar;
 import lab.model.CustomerBrokenException;
 import lab.model.Drink;
 import lab.model.Person;
+import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class ApuBar implements Bar {
 
     @Override
