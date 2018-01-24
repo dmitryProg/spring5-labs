@@ -13,10 +13,6 @@
     <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           p:dataSource-ref="dataSource"
           p:persistenceUnitName="springframework.lab.orm.jpa"
-          p:persistenceProviderClass="org.hibernate.jpa.HibernatePersistenceProvider"
-          p:loadTimeWeaver-ref="timeWeaver"/>
-
-    <bean id="timeWeaver"
-          class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+          p:persistenceProviderClass="org.hibernate.jpa.HibernatePersistenceProvider"/>
 
 </beans>

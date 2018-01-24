@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("classpath:jdbc.xml")
-class JdbcTest {
+public class JdbcTest {
 
     @Autowired
     private CountryJdbcDao countryJdbcDao;
@@ -34,7 +34,7 @@ class JdbcTest {
             "RU");
 
     @BeforeEach
-    void setUp() {
+    protected void setUp() {
         countryJdbcDao.prepareDb();
         initExpectedCountryLists();
         countryJdbcDao.loadCountries();

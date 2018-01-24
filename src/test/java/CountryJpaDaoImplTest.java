@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("classpath:orm.xml")
 @NoArgsConstructor
-class CountryJdbcDaoImplTest {
+class CountryJpaDaoImplTest {
 
 	private Country exampleCountry =
 			new SimpleCountry(1L, "Australia", "AU");

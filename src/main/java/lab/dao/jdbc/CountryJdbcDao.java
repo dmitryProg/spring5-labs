@@ -33,6 +33,7 @@ public class CountryJdbcDao extends NamedParameterJdbcDaoSupport {
     private static final String GET_COUNTRY_BY_NAME_SQL = "SELECT id, name, code_name FROM Сountry WHERE name='%s'";
     private static final String GET_COUNTRY_BY_CODE_NAME_SQL = "SELECT id, name, code_name FROM Сountry WHERE code_name = '%s'";
     private static final String UPDATE_COUNTRY_NAME_SQL = "UPDATE Сountry SET name='%s' WHERE code_name='%s'";
+    
     private static final RowMapper<Country> COUNTRY_ROW_MAPPER = (rs, i) -> new SimpleCountry(
             rs.getLong("id"),
             rs.getString("name"),

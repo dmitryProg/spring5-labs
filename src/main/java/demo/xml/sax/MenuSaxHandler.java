@@ -1,5 +1,6 @@
 package demo.xml.sax;
 
+import demo.xml.Food;
 import demo.xml.MenuTagName;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
@@ -76,10 +77,12 @@ public class MenuSaxHandler extends DefaultHandler {
         }
     }
 
+    @Override
     public void warning(SAXParseException exception) {
         log.warn("WARNING: line {}: {}", exception.getLineNumber(), exception.getMessage());
     }
 
+    @Override
     public void error(SAXParseException exception) {
         log.error("ERROR: line {}: {}", exception.getLineNumber(), exception.getMessage());
     }

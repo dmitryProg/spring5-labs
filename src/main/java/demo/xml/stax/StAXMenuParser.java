@@ -1,12 +1,11 @@
-package demo.xml.sax.stax;
+package demo.xml.stax;
 
 import demo.xml.MenuTagName;
-import demo.xml.sax.Food;
-import demo.xml.sax.Food.FoodBuilder;
+import demo.xml.Food;
+import demo.xml.Food.FoodBuilder;
 import lombok.SneakyThrows;
 
 import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.util.ArrayList;
 import java.util.List;
